@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Fogón de Don Nino — Parrilla de barrio</title>
+<meta name="description" content="El Fogón de Don Nino, parrilla de barrio con 40 años de historia.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/styles.css">
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+</head>
+<body>
+
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="#hero" class="navbar-brand">El Fogón de Don Nino</a>
+
+    <button class="navbar-toggle" id="navbar-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="navbar-nav" id="navbar-nav">
+      <a href="#carta" class="nav-link">Carta</a>
+      <a href="#como-pedir" class="nav-link">Cómo pedir</a>
+      <a href="#historia" class="nav-link">Historia</a>
+      <a href="#reservas" class="nav-link nav-cta">Reservas</a>
+    </nav>
+  </div>
+</header>
+
+<section id="hero" class="hero">
+  <canvas id="ember-canvas" class="ember-canvas" aria-hidden="true"></canvas>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <div class="status-badge" id="status-badge">
+      <span class="status-dot" id="status-dot" aria-hidden="true"></span>
+      <span class="status-text" id="status-text">Consultando horario...</span>
+    </div>
+
+    <h1 class="hero-title">El Fogón de<br>Don Nino</h1>
+    <p class="hero-subtitle">La mejor parrilla del barrio</p>
+
+    <a href="#carta" class="btn-primary" id="btn-ver-carta">Ver la carta</a>
+
+    <a href="#carta" class="scroll-hint" id="scroll-hint">
+      Descubrir
+      <span class="arrow" aria-hidden="true">↓</span>
+    </a>
+  </div>
+</section>
+
+<!-- Sección: Carta / Menú -->
+<section id="carta">
+  <div class="carta-container">
+    <div class="carta-header reveal">
+      <span class="seccion-label">Nuestra Carta</span>
+      <h2>La carta del Fogón</h2>
+      <p>Todos nuestros platos se preparan al momento, con el mismo fuego de siempre.</p>
+    </div>
+
+    <div class="carta-tabs reveal">
+      <button class="tab-btn active" data-tab="parrilla">Parrilla</button>
+      <button class="tab-btn" data-tab="milanesas">Milanesas</button>
+      <button class="tab-btn" data-tab="pastas">Pastas</button>
+      <button class="tab-btn" data-tab="ensaladas">Ensaladas</button>
+      <button class="tab-btn" data-tab="postres">Postres</button>
+    </div>
+
+    <div class="carta-content">
+      <div class="tab-panel active" id="tab-parrilla">
+        <div class="platos-grid" id="platos-parrilla"></div>
+      </div>
+      <div class="tab-panel" id="tab-milanesas">
+        <div class="platos-grid" id="platos-milanesas"></div>
+      </div>
+      <div class="tab-panel" id="tab-pastas">
+        <div class="platos-grid" id="platos-pastas"></div>
+      </div>
+      <div class="tab-panel" id="tab-ensaladas">
+        <div class="platos-grid" id="platos-ensaladas"></div>
+      </div>
+      <div class="tab-panel" id="tab-postres">
+        <div class="platos-grid" id="platos-postres"></div>
+      </div>
+    </div>
+
+    <div id="carta-loading" class="carta-estado">Cargando carta...</div>
+    <div id="carta-error" class="carta-estado" style="display:none">
+      No pudimos cargar la carta en este momento.
+      <br>Escribinos por WhatsApp y te la enviamos.
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Cómo pedir -->
+<section id="como-pedir">
+  <div class="como-pedir-container">
+
+    <div class="como-pedir-header reveal">
+      <span class="seccion-label">Cómo Pedir</span>
+      <h2>Elegí cómo disfrutarlo</h2>
+      <p>Tres formas de vivir la experiencia del Fogón.</p>
+    </div>
+
+    <div class="modalidades-grid">
+
+      <div class="modalidad-card modalidad-card--destacada reveal">
+        <div class="modalidad-foto" style="background-image:
+          linear-gradient(rgba(26,26,24,0.45) 0%, rgba(26,26,24,0.75) 100%),
+          url('https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;">
+          <div class="modalidad-contenido">
+            <div class="modalidad-icono">🍽</div>
+            <h3 class="modalidad-titulo">En el Salón</h3>
+            <p class="modalidad-desc">Vení y disfrutá en nuestro salón.
+            Los fines de semana se llena — reservá con anticipación.</p>
+            <a href="https://wa.me/5491168524390?text=Hola%2C%20quiero%20reservar%20una%20mesa%20en%20El%20Fog%C3%B3n%20de%20Don%20Nino"
+               class="modalidad-btn btn-whatsapp" target="_blank">
+              Reservar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="modalidad-card reveal">
+        <div class="modalidad-foto" style="background-image:
+          linear-gradient(rgba(26,26,24,0.45) 0%, rgba(26,26,24,0.75) 100%),
+          url('https://images.pexels.com/photos/37069406/pexels-photo-37069406.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;">
+          <div class="modalidad-contenido">
+            <div class="modalidad-icono">🥡</div>
+            <h3 class="modalidad-titulo">Para Llevar</h3>
+            <p class="modalidad-desc">Pedí con anticipación y retirá
+            tu pedido listo para llevar.</p>
+            <a href="tel:+541168524390"
+               class="modalidad-btn btn-llamar">
+              Llamar para pedir
+            </a>
+            <p class="modalidad-telefono">(011) 6852-4390</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modalidad-card reveal">
+        <div class="modalidad-foto" style="background-image:
+          linear-gradient(rgba(26,26,24,0.45) 0%, rgba(26,26,24,0.75) 100%),
+          url('https://images.pexels.com/photos/37092781/pexels-photo-37092781.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;">
+          <div class="modalidad-contenido">
+            <div class="modalidad-icono">🛵</div>
+            <h3 class="modalidad-titulo">Delivery</h3>
+            <p class="modalidad-desc">También llegamos a tu casa.
+            Buscanos en tu app de delivery favorita.</p>
+            <span class="modalidad-info">
+              Próximamente por app de delivery
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Nuestra Historia -->
+<section id="historia">
+  <div class="historia-container">
+
+    <div class="historia-contenido reveal">
+      <span class="seccion-label">Nuestra Historia</span>
+      <h2>40 años de brasa y familia</h2>
+      <p class="historia-texto">
+        Todo empezó con Don Nino, que un día encendió el primer fuego en este
+        mismo rincón del barrio. No había secretos, solo buena carne, brasas
+        bien cuidadas y las ganas de hacer las cosas como corresponde.
+        Hoy, su hijo Ricardo mantiene viva esa llama — con los mismos valores,
+        el mismo fuego y el mismo orgullo de siempre.
+      </p>
+      <div class="historia-hitos">
+        <div class="hito">
+          <span class="hito-numero">1984</span>
+          <span class="hito-label">Año de fundación</span>
+        </div>
+        <div class="hito-separador"></div>
+        <div class="hito">
+          <span class="hito-numero">40+</span>
+          <span class="hito-label">Años en el barrio</span>
+        </div>
+        <div class="hito-separador"></div>
+        <div class="hito">
+          <span class="hito-numero">3</span>
+          <span class="hito-label">Generaciones de familia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="historia-foto reveal">
+      <div class="historia-img-wrapper">
+        <img
+          src="https://images.pexels.com/photos/36948103/pexels-photo-36948103.jpeg?auto=compress&cs=tinysrgb&w=1200"
+          alt="El Fogón de Don Nino — historia del lugar"
+          onerror="this.parentElement.classList.add('foto-fallback')"
+        />
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Sección: Reseñas -->
+<section id="resenas">
+  <div class="resenas-container">
+
+    <div class="resenas-header reveal">
+      <span class="seccion-label">Reseñas</span>
+      <h2>Lo que dicen nuestros clientes</h2>
+    </div>
+
+    <div class="carrusel-wrapper reveal">
+      <div class="carrusel-track" id="carruselTrack">
+
+        <div class="resena-card">
+          <div class="resena-estrellas">★★★★★</div>
+          <p class="resena-texto">"Llevamos años viniendo con la familia los domingos.
+          El asado de tira es una obra de arte y el flan casero no tiene competencia
+          en el barrio. Un clásico de Almagro."</p>
+          <span class="resena-autor">— María G.</span>
+        </div>
+
+        <div class="resena-card">
+          <div class="resena-estrellas">★★★★★</div>
+          <p class="resena-texto">"Cuarenta años no mienten. La parrilla siempre a
+          punto, la atención de Ricardo es como la de siempre, y los precios son
+          honestos. No hay más que pedir."</p>
+          <span class="resena-autor">— Carlos R.</span>
+        </div>
+
+        <div class="resena-card">
+          <div class="resena-estrellas">★★★★★</div>
+          <p class="resena-texto">"Fui por primera vez recomendado por un amigo y
+          ya reservé para el finde que viene. La provoleta y el vacío son
+          imperdibles. Lugar con alma de barrio."</p>
+          <span class="resena-autor">— Sebastián M.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="carrusel-controles reveal">
+      <button class="carrusel-flecha carrusel-flecha--prev" id="carruselPrev" aria-label="Reseña anterior">‹</button>
+      <button class="carrusel-flecha carrusel-flecha--next" id="carruselNext" aria-label="Reseña siguiente">›</button>
+    </div>
+
+    <div class="resenas-footer reveal">
+      <a href="https://maps.google.com/?q=El+Fogón+de+Don+Nino+Almagro+Buenos+Aires"
+         target="_blank"
+         class="btn-google-resenas">
+        Ver todas las reseñas en Google
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- Sección: Horarios y Ubicación -->
+<section id="horarios">
+  <div class="horarios-container">
+
+    <div class="horarios-header reveal">
+      <span class="seccion-label">Horarios y Ubicación</span>
+      <h2>Encontranos en el barrio</h2>
+    </div>
+
+    <div class="horarios-grid">
+
+      <div class="horarios-columna reveal">
+        <h3 class="horarios-subtitulo">Horarios de atención</h3>
+        <div class="dias-lista">
+
+          <div class="dia-row">
+            <span class="dia-nombre">Martes</span>
+            <span class="dia-horario">12:00–15:30 / 20:00–23:30</span>
+          </div>
+          <div class="dia-row">
+            <span class="dia-nombre">Miércoles</span>
+            <span class="dia-horario">12:00–15:30 / 20:00–23:30</span>
+          </div>
+          <div class="dia-row">
+            <span class="dia-nombre">Jueves</span>
+            <span class="dia-horario">12:00–15:30 / 20:00–23:30</span>
+          </div>
+          <div class="dia-row">
+            <span class="dia-nombre">Viernes</span>
+            <span class="dia-horario">12:00–15:30 / 20:00–23:30</span>
+          </div>
+          <div class="dia-row">
+            <span class="dia-nombre">Sábado</span>
+            <span class="dia-horario">12:00–16:00 / 20:00–00:30</span>
+          </div>
+          <div class="dia-row">
+            <span class="dia-nombre">Domingo</span>
+            <span class="dia-horario">12:00–16:00 / 20:00–00:30</span>
+          </div>
+          <div class="dia-row dia-cerrado">
+            <span class="dia-nombre">Lunes</span>
+            <span class="dia-horario">Cerrado</span>
+          </div>
+
+        </div>
+
+        <div class="direccion-bloque">
+          <span class="direccion-label">Dirección</span>
+          <p class="direccion-texto">
+            Av. Corrientes 4521, Almagro, Buenos Aires
+          </p>
+        </div>
+      </div>
+
+      <div class="mapa-columna reveal">
+        <div class="mapa-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=Av.+Corrientes+4521,+Almagro,+Buenos+Aires&output=embed"
+            width="100%"
+            height="350"
+            style="border:0; border-radius: 8px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Sección: Reservas -->
+<section id="reservas">
+  <div class="reservas-container reveal">
+
+    <span class="seccion-label">Reservas</span>
+    <h2>¿Venís a comer?</h2>
+    <p class="reservas-subtitulo">
+      Los fines de semana el salón se llena rápido.<br>
+      Reservá tu mesa por WhatsApp y asegurate el lugar.
+    </p>
+
+    <a
+      href="https://wa.me/5491168524390?text=Hola%2C%20quiero%20hacer%20una%20reserva%20en%20El%20Fog%C3%B3n%20de%20Don%20Nino"
+      target="_blank"
+      class="btn-reservar-whatsapp"
+    >
+      Reservar por WhatsApp
+    </a>
+
+    <p class="reservas-nota">
+      También podés llamarnos al
+      <a href="tel:+541168524390" class="tel-link">
+        (011) 6852-4390
+      </a>
+    </p>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="footer-container">
+
+    <div class="footer-marca">
+      <span class="footer-logo">El Fogón de Don Nino</span>
+      <p class="footer-tagline">40 años de brasa y tradición.</p>
+    </div>
+
+    <div class="footer-nav">
+      <span class="footer-col-titulo">Navegación</span>
+      <nav>
+        <a href="#carta">Carta</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#historia">Historia</a>
+        <a href="#horarios">Horarios</a>
+        <a href="#reservas">Reservas</a>
+      </nav>
+    </div>
+
+    <div class="footer-horarios">
+      <span class="footer-col-titulo">Horarios</span>
+      <p>Mar–Dom: mediodía y noche</p>
+      <p>Lunes: cerrado</p>
+    </div>
+
+    <div class="footer-redes">
+      <span class="footer-col-titulo">Seguinos</span>
+      <a href="https://www.instagram.com/elfogondedonino"
+         target="_blank"
+         class="footer-instagram">
+        @elfogondedonino
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2024 El Fogón de Don Nino. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
