@@ -39,28 +39,67 @@ El local existe hace 40 años pero no aparecía en búsquedas digitales — el p
 7. **Reservas** — botón directo a WhatsApp con mensaje preescrito
 8. **Footer**
 
-## Cómo correrlo local
+## Paleta de colores
 
-No requiere instalación. Cualquier servidor estático simple sirve:
+| Nombre | Hex | Uso |
+|---|---|---|
+| Negro carbón | `#1A1A18` | Fondo de todas las secciones |
+| Naranja fuego | `#C4501A` | Acentos, CTAs, badge destacado |
+| Ámbar | `#E8820C` | Labels, iconos, stats |
+| Crema | `#F5ECD7` | Texto principal |
+
+## Ver el sitio localmente
+
+No requiere instalación ni build:
 
 ```bash
-python -m http.server 8000
-# o
+git clone https://github.com/JesusAcst/fogon-don-nino.git
+cd fogon-don-nino
+```
+
+Abrí con Live Server o cualquier servidor local.
+No abrir con `file://` — el fetch a Google Sheets
+requiere HTTP.
+
+```bash
+# con Node instalado
 npx serve .
 ```
 
-Y abrir `http://localhost:8000`.
+## Ver en producción
 
-> ⚠️ Abrir `index.html` directo con `file://` puede romper el `fetch()` al Google Sheet en algunos navegadores — serví el sitio por HTTP para probarlo como en producción.
+🔗 [fogon-don-nino-nine.vercel.app](https://fogon-don-nino-nine.vercel.app)
 
-## Deploy
+## Cómo actualizar la carta
 
-Configurado para deploy estático en [Vercel](https://vercel.com) vía `vercel.json` — sin build step, sirve `index.html` y sus assets directamente.
+El dueño puede actualizar precios sin tocar código:
 
-## Carta dinámica
+1. Abrí el Google Sheet de la carta
+2. Editá el precio en la columna `precio`
+3. Guardá — la web se actualiza en la próxima
+   carga de cualquier usuario
 
-Los precios se cargan desde un Google Sheet publicado como CSV (`categoria,nombre,descripcion,precio`). Si el fetch falla o el Sheet no devuelve filas, el sitio cae automáticamente a una carta de respaldo embebida en `main.js` para que la sección nunca quede vacía.
+## Pendientes antes del lanzamiento real
+
+- [ ] Número de WhatsApp real del restaurante
+- [ ] Número de teléfono real
+- [ ] Dirección exacta y embed de Maps actualizado
+- [ ] Usuario de Instagram real
+- [ ] Link a Google Business real
+- [ ] Nombre de la app de delivery
+- [ ] Fotos reales del local y la familia
+- [ ] Logo oficial del restaurante
+- [ ] Reseñas reales de clientes
 
 ## Licencia
 
 Proyecto privado para El Fogón de Don Nino. Todos los derechos reservados.
+
+---
+
+<div align="center">
+Proyecto académico — desarrollado con metodología
+de proceso profesional por etapas.<br>
+Análisis → Arquitectura → Construcción
+→ Revisión → Refinamiento → Deploy
+</div>
