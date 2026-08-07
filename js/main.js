@@ -347,19 +347,14 @@ async function cargarCarta() {
   }
 
   try {
-    console.log('[Carta] Iniciando fetch...');
-    const response = await fetch(CARTA_SHEET_URL);
-    console.log('[Carta] Status:', response.status);
-    console.log('[Carta] OK:', response.ok);
+    const response = await fetch(
+      CARTA_SHEET_URL + '&t=' + Date.now()
+    );
     const text = await response.text();
-    console.log('[Carta] Primeros 200 chars del CSV:', text.slice(0, 200));
     const platos = parsearCSV(text);
-    console.log('[Carta] Platos parseados:', platos.length);
-    console.log('[Carta] Primer plato:', platos[0]);
     renderizarCarta(platos.length ? platos : CARTA_FALLBACK);
     loading.style.display = 'none';
   } catch (e) {
-    console.log('[Carta] Error en fetch:', e.message);
     renderizarCarta(CARTA_FALLBACK);
     loading.style.display = 'none';
   }
