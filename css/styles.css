@@ -40,6 +40,15 @@ section {
   scroll-margin-top: 64px;
 }
 
+#carta,
+#como-pedir,
+#historia,
+#resenas,
+#horarios,
+#reservas {
+  scroll-margin-top: 73px;
+}
+
 section h2 {
   font-family: var(--font-display);
   font-size: 34px;
