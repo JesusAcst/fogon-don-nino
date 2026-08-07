@@ -688,6 +688,7 @@ section h2 {
 }
 
 .modalidad-card {
+  background-color: var(--madera-oscura);
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(196, 80, 26, 0.2);
@@ -706,8 +707,9 @@ section h2 {
 }
 
 .modalidad-contenido {
-  padding: 28px;
+  padding: 0;
   width: 100%;
+  text-align: center;
 }
 
 .modalidad-icono {
